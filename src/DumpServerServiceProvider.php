@@ -43,8 +43,7 @@ class DumpServerServiceProvider extends ServiceProvider
         $host = $this->app['config']->get('debug-server.host');
 
         $this->app->when(DumpServer::class)->needs('$host')->give($host);
-
-        dd($host);
+        
         $connection = new Connection($host, [
             'request' => new RequestContextProvider($this->app['request']),
             'source' => new SourceContextProvider('utf-8', base_path()),
